@@ -37,7 +37,14 @@ while cap.isOpened():
 
         # Canny Edge Detection으로 엣지 추출
         canny_image = cv2.Canny(gray_image, 50, 150)
-        cv2.imshow('Processed Result', canny_image)
+
+        # 영상 창 크기를 비율을 유지하면서 세로 500으로 설정
+        height, width = canny_image.shape[:2]
+        ratio = 500 / height
+        dimension = (int(width * ratio), 500)
+        resized_image = cv2.resize(canny_image, dimension, interpolation = cv2.INTER_AREA)
+
+        cv2.imshow('Processed Result', resized_image)
 
         # 키보드 'q' 키를 누르면 종료
         if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -47,3 +54,4 @@ while cap.isOpened():
 
 cap.release()
 cv2.destroyAllWindows()
+g

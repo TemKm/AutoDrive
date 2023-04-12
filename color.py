@@ -24,14 +24,14 @@ def create_circular_spectrum(lower_bgr, upper_bgr):
     return bgr_circular_spectrum
 
 # 첫 번째 BGR 범위
-lower_bgr1 = np.array([170, 170, 200], dtype=np.uint8)
+lower_bgr1 = np.array([100, 100, 100], dtype=np.uint8)
 upper_bgr1 = np.array([255, 255, 255], dtype=np.uint8)
 spectrum1 = create_circular_spectrum(lower_bgr1, upper_bgr1)
 cv2.imshow('Circular Spectrum 1', spectrum1)
 
-# 두 번째 BGR 범위
-lower_bgr2 = np.array([20, 100, 100], dtype=np.uint8)
-upper_bgr2 = np.array([30, 255, 255], dtype=np.uint8)
+# 두 번째 BGR 범위 (HSV [20, 100, 100]부터 [30, 255, 255])
+lower_bgr2 = cv2.cvtColor(np.uint8([[[20, 100, 100]]]), cv2.COLOR_HSV2BGR)[0, 0]
+upper_bgr2 = cv2.cvtColor(np.uint8([[[30, 255, 255]]]), cv2.COLOR_HSV2BGR)[0, 0]
 spectrum2 = create_circular_spectrum(lower_bgr2, upper_bgr2)
 cv2.imshow('Circular Spectrum 2', spectrum2)
 
