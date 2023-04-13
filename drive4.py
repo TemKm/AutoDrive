@@ -1,12 +1,6 @@
 import cv2
 import numpy as np
 
-def resize_frame(frame, height=500):
-    h, w = frame.shape[:2]
-    aspect_ratio = w / h
-    width = int(height * aspect_ratio)
-    return cv2.resize(frame, (width, height))
-
 def process_frame(frame):
     # BGR 영상에서 흰색 후보 검출
     lower_white = np.array([130, 130, 130])
@@ -40,7 +34,6 @@ def roi(edges):
     cv2.fillPoly(mask, roi_vertices, 255)
     return cv2.bitwise_and(edges, mask)
 
-
 def hough_lines(edges):
     return cv2.HoughLinesP(edges, 1, np.pi / 180, 100, minLineLength=100, maxLineGap=50)
 
@@ -53,7 +46,6 @@ def draw_lines(frame, lines):
                 cv2.line(frame, (x1, y1), (x2, y2), (0, 0, 255), 2)
     return frame
 
-
 # 웹캠에서 영상 가져오기
 cap = cv2.VideoCapture("drive2.mp4")
 
@@ -65,25 +57,20 @@ while True:
 
     # 프레임 처리 및 결과 창에 띄우기
     result, edges = process_frame(frame)
-    resized_result = resize_frame(result)
-    resized_edges = resize_frame(edges)
-    cv2.imshow("Result", resized_result)
-    cv2.imshow("Edges", resized_edges)
+    cv2.imshow("Result", result)
+    cv2.imshow("Edges", edges)
 
     # 관심 영역을 적용한 엣지 추출
     roi_edges = roi(edges)
-    resized_roi_edges = resize_frame(roi_edges)
-    cv2.imshow("ROI Edges", resized_roi_edges)
+    cv2.imshow("ROI Edges", roi_edges)
 
     # 허프 변환을 사용하여 직선 성분 추출
     lines = hough_lines(roi_edges)
 
     # 추출한 직선 성분을 표시
-    lines_img = draw_lines(frame.copy(), lines)
-    resized_lines_img = resize_frame(lines_img)
-    cv2.imshow("Hough Lines", resized_lines_img)
+    lines_img = draw_lines
+    cv2.imshow("Hough Lines", lines_img)
 
-    # 종료 키 입력 대기
     if cv2.waitKey(1) & 0xFF == ord("q"):
         break
 
