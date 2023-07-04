@@ -55,7 +55,7 @@ def draw_lines(frame, lines):
 
 
 # 웹캠에서 영상 가져오기
-cap = cv2.VideoCapture("drive2.mp4")
+cap = cv2.VideoCapture("drive3.mp4")
 
 while True:
     ret, frame = cap.read()
