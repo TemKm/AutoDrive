@@ -35,7 +35,7 @@ def process_frame(frame):
 
 def roi(edges):
     mask = np.zeros_like(edges)
-    h, w = edges.shape
+    h, w = edges.shapeq
     roi_vertices = np.array([[(w // 3, h), (w // 3, h // 4 * 3), (w // 3 * 2, h // 4 * 3), (w // 3 * 2, h)]], dtype=np.int32)
     cv2.fillPoly(mask, roi_vertices, 255)
     return cv2.bitwise_and(edges, mask)

@@ -4,7 +4,7 @@ int delaytime = 2;
 // ports used to control the stepper motor
 // if your motor rotate to the opposite direction, 
 // change the order as {4, 5, 6, 7};
-int port[4] = {7, 6, 5, 4};
+int port[4] = {8, 9, 10, 11};
 
 // sequence of stepper motor control
 int seq[8][4] = {

@@ -4,7 +4,7 @@ import numpy as np
 
 class ScreenCap:
     def __init__(self):
-        self.screen_coords = (1298, 210, 2511, 768)  # 전체 화면 좌표로 설정. 환경에 맞게 조정 가능.
+        self.screen_coords = (0, 100, 1280, 720)  # 전체 화면 좌표로 설정. 환경에 맞게 조정 가능.
 
     def screen_cap(self):
         """
