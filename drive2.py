@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-
+#이 코드는 
 def resize_frame(frame, height=500):
     h, w = frame.shape[:2]
     aspect_ratio = w / h
